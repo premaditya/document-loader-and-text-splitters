@@ -1,0 +1,123 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 1015 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+72 730 Td
+(Machine Learning - Short Notes) Tj
+T*
+() Tj
+T*
+(Chapter 1  What is machine learning) Tj
+T*
+() Tj
+T*
+(Machine learning is a branch of artificial intelligence that lets computers) Tj
+T*
+(learn from data instead of following a fixed set of rules written by a) Tj
+T*
+(developer. The developer gives the program examples and a goal, and the) Tj
+T*
+(program finds the patterns that reach that goal by itself.) Tj
+T*
+() Tj
+T*
+(There are three common types. Supervised learning uses labelled examples,) Tj
+T*
+(such as emails already marked as spam or not spam. Unsupervised learning) Tj
+T*
+(finds hidden groups in data that has no labels. Reinforcement learning) Tj
+T*
+(trains an agent with rewards for good actions and penalties for bad ones.) Tj
+T*
+() Tj
+T*
+(A model starts with random guesses. It predicts, measures the error) Tj
+T*
+(against the correct answer, and adjusts its internal numbers a little.) Tj
+T*
+(This loop repeats thousands of times until the error becomes small.) Tj
+T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 7 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+7 0 obj
+<< /Length 1150 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+72 730 Td
+(Chapter 2  Documents, chunks and retrieval) Tj
+T*
+() Tj
+T*
+(Retrieval augmented generation, short RAG, searches your own documents) Tj
+T*
+(before the language model answers, so the answer can be based on real) Tj
+T*
+(evidence instead of the model's memory.) Tj
+T*
+() Tj
+T*
+(The first step is loading. A document loader reads a file and returns) Tj
+T*
+(Document objects. Each Document has page_content, the text itself, and) Tj
+T*
+(metadata, which describes where the text came from.) Tj
+T*
+() Tj
+T*
+(The second step is splitting. A text splitter cuts the big document into) Tj
+T*
+(small pieces called chunks, because embedding models work with small) Tj
+T*
+(pieces of text. Chunk size and chunk overlap control how the cuts are) Tj
+T*
+(made. Overlap repeats a little text so that a sentence crossing a cut is) Tj
+T*
+(still understandable in both neighbouring chunks.) Tj
+T*
+() Tj
+T*
+(Each chunk then becomes an embedding, a list of numbers that represents) Tj
+T*
+(its meaning, and the embeddings are stored in a vector database. A) Tj
+T*
+(question is embedded the same way and the closest chunks are retrieved.) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000000317 00000 n 
+0000001384 00000 n 
+0000001510 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+2712
+%%EOF

@@ -1,0 +1,52 @@
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+Machine learning is a branch of artificial intelligence that gives computers the ability to learn from data without being explicitly programmed for every situation. Instead of writing a fixed set of rules, we show the computer many examples and let it find the patterns by itself.
+
+Why machine learning matters
+
+Traditional software follows instructions written by a developer. Machine learning is different: the developer gives the program data and a goal, and the program figures out how to reach that goal. This is very useful when the rules are too complicated to write down, such as recognising a face in a photo or understanding spoken language.
+
+Types of machine learning
+
+There are three main types of machine learning. Supervised learning uses labelled data, meaning every example already has the correct answer, such as emails marked as spam or not spam. Unsupervised learning uses data with no labels and tries to find hidden groups, such as customers with similar buying habits. Reinforcement learning trains an agent by rewarding it for good actions and punishing it for bad ones, which is how game-playing programs learn.
+
+How a model learns
+
+A model starts with random guesses. During training it makes a prediction, compares the prediction with the correct answer, measures the error, and then adjusts its internal numbers a little to reduce the error. This loop is repeated thousands of times until the error becomes small. The data is usually split into a training set, a validation set, and a test set so that we can check whether the model works on new data.
+
+
+CHAPTER 2
+NEURAL NETWORKS
+
+A neural network is a model made of layers of simple units called neurons. Each neuron takes some numbers in, multiplies them by weights, adds a bias, and passes the result through a small function called an activation function. Although one neuron is very simple, millions of them together can represent very complicated patterns.
+
+Layers and weights
+
+The first layer receives the raw input, such as the pixels of an image. The layers in the middle, called hidden layers, extract features such as edges, shapes, and finally objects. The last layer produces the answer. Training means adjusting all the weights, and this is done with an algorithm called backpropagation, which sends the error backwards through the network and updates each weight a little.
+
+Convolutional neural networks
+
+A convolutional neural network, or CNN, is designed for images. Instead of connecting every pixel to every neuron, it slides small filters across the image to detect local patterns such as lines and corners. This makes CNNs much more efficient for pictures and they are widely used in medical image analysis, self-driving cars, and photo search.
+
+Recurrent neural networks
+
+A recurrent neural network, or RNN, is designed for sequences such as text, speech, and time series. It keeps a memory of what it has already seen, so the order of the words matters. Later versions such as LSTM and GRU solve the problem of forgetting information from long ago. RNNs were an important step towards the models that today can write paragraphs of text.
+
+
+CHAPTER 3
+FROM DOCUMENTS TO RETRIEVAL
+
+Large language models are very good at generating text, but they do not know your private files, and they can sometimes invent facts that sound true. Retrieval augmented generation, short RAG, solves this by searching your own documents first and putting the found text into the prompt as evidence.
+
+Documents and chunks
+
+The first step is loading. A document loader reads a file such as a TXT, PDF, or Markdown file and converts it into a Document object that has two parts: page_content holds the actual text, and metadata holds information about where the text came from. The second step is splitting. A text splitter cuts the large document into small pieces called chunks, because embedding models and vector databases work with small pieces of text rather than whole books.
+
+Embeddings and vector databases
+
+Each chunk is converted into a list of numbers called an embedding, which is a numerical representation of the meaning of the text. Similar meanings produce similar numbers. All the embeddings are stored in a vector database such as Chroma or FAISS, which can quickly find the chunks closest to a question.
+
+Retrieval and generation
+
+When the user asks a question, the question is also converted into an embedding, and the vector database returns the top matching chunks. Those chunks are inserted into the prompt, and the language model writes the answer using only that evidence. The metadata that stayed with each chunk tells us which file and which page the answer came from, so the answer can be checked by a human.

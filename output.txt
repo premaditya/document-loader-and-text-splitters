@@ -1,0 +1,302 @@
+==================================================
+DOCUMENT LOADING
+==================================================
+Loader: TextLoader (sample.txt)
+Number of Documents: 1
+Original Length: 4757 characters
+Metadata: {'source': 'data/sample.txt'}
+page_content (first 300 characters):
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+Machine learning is a branch of artificial intelligence that gives computers the ability to learn from data without being explicitly programmed for every situation. Instead of writing a fixed set of rules, we show the computer many examples and let it find
+
+A Document has two parts:
+  page_content -> the text itself
+  metadata     -> where the text came from
+
+Other document types:
+Loader: PyPDFLoader (sample.pdf)
+Number of Documents: 2
+Original Length: 1805 characters
+Metadata: {'producer': 'PyPDF', 'creator': 'PyPDF', 'creationdate': '', 'source': 'data/sample.pdf', 'total_pages': 2, 'page': 0, 'page_label': '1'}
+page_content (first 300 characters):
+Machine Learning - Short Notes
+Chapter 1  What is machine learning
+Machine learning is a branch of artificial intelligence that lets computers
+learn from data instead of following a fixed set of rules written by a
+developer. The developer gives the program examples and a goal, and the
+program finds 
+
+Loader: TextLoader (sample.md)
+Number of Documents: 1
+Original Length: 999 characters
+Metadata: {'source': 'data/sample.md'}
+page_content (first 300 characters):
+# Study Notes: Electricity
+
+These are my short notes about how electricity works. I wrote them for the physics revision session.
+
+## Current and Voltage
+
+Electric current is the flow of electric charge through a wire, measured in amperes. Voltage is the push that makes the charges move, measured in 
+
+==================================================
+CHUNK SIZE EXPERIMENT
+==================================================
+Splitter: RecursiveCharacterTextSplitter
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 200
+Chunk Overlap: 20
+Number of Chunks: 41
+Total Chunks: 41
+Average Chunk Length: 121.6
+Minimum Chunk Length: 18
+Maximum Chunk Length: 199
+First chunk (first 200 characters):
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 500
+Chunk Overlap: 50
+Number of Chunks: 12
+Total Chunks: 12
+Average Chunk Length: 415.2
+Minimum Chunk Length: 354
+Maximum Chunk Length: 482
+First chunk (first 200 characters):
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+Machine learning is a branch of artificial intelligence that gives computers the ability to learn from data without being explicitly programmed for every si
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 1000
+Chunk Overlap: 100
+Number of Chunks: 6
+Total Chunks: 6
+Average Chunk Length: 817.2
+Minimum Chunk Length: 722
+Maximum Chunk Length: 953
+First chunk (first 200 characters):
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+Machine learning is a branch of artificial intelligence that gives computers the ability to learn from data without being explicitly programmed for every si
+
+==================================================
+EXTREME CHUNK SIZES
+==================================================
+--------------------------------------------------
+Very small chunks (chunk_size = 100, chunk_overlap = 0)
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 100
+Chunk Overlap: 0
+Number of Chunks: 63
+Total Chunks: 63
+Average Chunk Length: 74.1
+Minimum Chunk Length: 9
+Maximum Chunk Length: 99
+First 3 chunks:
+0 -> 'CHAPTER 1\nINTRODUCTION TO MACHINE LEARNING'
+1 -> 'Machine learning is a branch of artificial intelligence that gives computers the ability to learn'
+2 -> 'from data without being explicitly programmed for every situation. Instead of writing a fixed set'
+
+--------------------------------------------------
+Very large chunks (chunk_size = 5000, chunk_overlap = 0)
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 5000
+Chunk Overlap: 0
+Number of Chunks: 1
+Total Chunks: 1
+Average Chunk Length: 4756.0
+Minimum Chunk Length: 4756
+Maximum Chunk Length: 4756
+
+Tiny chunks cut sentences into pieces that are hard to understand
+alone. A chunk size bigger than the whole document gives just one
+chunk, so nothing is really split.
+
+==================================================
+CHUNK OVERLAP EXPERIMENT
+==================================================
+Splitter: RecursiveCharacterTextSplitter, Chunk Size: 300
+(I first tried this with chunk size 500, but then overlap 50, 100
+ and 200 gave the same result on my document. With 300 the
+ differences are clearly visible.)
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 300
+Chunk Overlap: 0
+Number of Chunks: 34
+Total Chunks: 34
+Average Chunk Length: 138.2
+Minimum Chunk Length: 9
+Maximum Chunk Length: 299
+Chunk pairs with repeated text: 0 of 33
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 300
+Chunk Overlap: 50
+Number of Chunks: 34
+Total Chunks: 34
+Average Chunk Length: 151.7
+Minimum Chunk Length: 18
+Maximum Chunk Length: 299
+Chunk pairs with repeated text: 10 of 33
+Average repeated characters per pair: 45.1
+Example of repeated text: 'to write down, such as recognising a face in a'
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 300
+Chunk Overlap: 100
+Number of Chunks: 34
+Total Chunks: 34
+Average Chunk Length: 166.8
+Minimum Chunk Length: 18
+Maximum Chunk Length: 299
+Chunk pairs with repeated text: 10 of 33
+Average repeated characters per pair: 96.4
+Example of repeated text: 'is very useful when the rules are too complicated to write down, such as recogni'
+
+--------------------------------------------------
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 300
+Chunk Overlap: 200
+Number of Chunks: 38
+Total Chunks: 38
+Average Chunk Length: 196.0
+Minimum Chunk Length: 18
+Maximum Chunk Length: 299
+Chunk pairs with repeated text: 14 of 37
+Average repeated characters per pair: 195.7
+Example of repeated text: 'developer gives the program data and a goal, and the program figures out how to '
+
+==================================================
+SPLITTER COMPARISON
+==================================================
+Created a chunk of size 339, which is longer than the specified 300
+Created a chunk of size 455, which is longer than the specified 300
+Created a chunk of size 421, which is longer than the specified 300
+Created a chunk of size 331, which is longer than the specified 300
+Created a chunk of size 403, which is longer than the specified 300
+Created a chunk of size 345, which is longer than the specified 300
+Created a chunk of size 365, which is longer than the specified 300
+Created a chunk of size 457, which is longer than the specified 300
+Created a chunk of size 306, which is longer than the specified 300
+Splitter                            Chunk Size  Overlap   Chunks
+-----------------------------------------------------------------
+RecursiveCharacterTextSplitter             300       50       34
+CharacterTextSplitter                      300       50       24
+
+RecursiveCharacterTextSplitter: longest chunk = 299 | chunks bigger than chunk_size = 0
+CharacterTextSplitter:          longest chunk = 457 | chunks bigger than chunk_size = 10
+
+Explanation:
+RecursiveCharacterTextSplitter can use several separators (paragraph,
+line, word), so it always finds a place to cut and every chunk stays
+inside the chunk size. CharacterTextSplitter only looks for one
+separator (\n\n). If no blank line exists inside the chunk size it
+cannot cut the text, so the chunk becomes bigger than chunk_size.
+(LangChain even printed warnings like 'Created a chunk of size 455,
+which is longer than the specified 300'.)
+This is why the recursive splitter is usually the better choice.
+
+==================================================
+METADATA INSPECTION
+==================================================
+Metadata of the original Document:
+{'source': 'data/sample.txt'}
+
+Metadata of chunk 0 after splitting:
+{'source': 'data/sample.txt', 'start_index': 0}
+
+The original metadata is carried to the chunks, so we can identify
+where the chunk came from. Only new keys are added, for example
+start_index (the position of the chunk inside the original text).
+
+==================================================
+CHUNK INSPECTION
+==================================================
+Splitter: RecursiveCharacterTextSplitter
+Chunk Size: 500
+Chunk Overlap: 50
+Number of Chunks: 12
+
+Chunk Number: 0
+Length: 354 characters
+Content:
+CHAPTER 1
+INTRODUCTION TO MACHINE LEARNING
+
+Machine learning is a branch of artificial intelligence that gives computers the ability to learn from data without being explicitly programmed for every situation. Instead of writing a fixed set of rules, we show the computer many examples and let it find the patterns by itself.
+
+Why machine learning matters
+Metadata: {'source': 'data/sample.txt', 'start_index': 0}
+
+Chunk Number: 1
+Length: 396 characters
+Content:
+Why machine learning matters
+
+Traditional software follows instructions written by a developer. Machine learning is different: the developer gives the program data and a goal, and the program figures out how to reach that goal. This is very useful when the rules are too complicated to write down, such as recognising a face in a photo or understanding spoken language.
+
+Types of machine learning
+Metadata: {'source': 'data/sample.txt', 'start_index': 326}
+
+Statistics:
+Total Chunks: 12
+Average Chunk Length: 415.2
+Minimum Chunk Length: 354
+Maximum Chunk Length: 482
+
+Why does a chunk start and end here? The splitter first tries to cut
+at a paragraph (\n\n), then at a line (\n), then at a space, and it
+stops at the last place that still fits inside the chunk size.
+
+==================================================
+ERROR HANDLING
+==================================================
+
+Test 1: chunk_size = 500 with chunk_overlap = 600
+Result: Failed with an error
+Error message: chunk_overlap (600) must be smaller than chunk_size (500)
+
+Test 2: loading a TXT file that does not exist
+Result: Failed with an error
+Error message: Error loading data/this_file_does_not_exist.txt
+
+==================================================
+OBSERVATIONS
+==================================================
+1. Chunk size experiment:
+   chunk_size =  200, overlap =  20  ->   41 chunks
+   chunk_size =  500, overlap =  50  ->   12 chunks
+   chunk_size = 1000, overlap = 100  ->    6 chunks
+   chunk_size = 100, overlap = 0     -> 63 chunks
+   chunk_size = 5000, overlap = 0    -> 1 chunks
+   A bigger chunk size means fewer chunks.
+
+2. Chunk overlap experiment (chunk size = 300):
+   overlap =   0  ->   34 chunks, repeated text in  0 of 33 chunk pairs
+   overlap =  50  ->   34 chunks, repeated text in 10 of 33 chunk pairs
+   overlap = 100  ->   34 chunks, repeated text in 10 of 33 chunk pairs
+   overlap = 200  ->   38 chunks, repeated text in 14 of 37 chunk pairs
+   A bigger overlap means more repeated text, and a little more chunks.
+   The repeated text keeps a sentence understandable in both chunks,
+   but it also uses more space.
+
+3. Splitters: the recursive splitter always stayed inside the chunk
+   size, the character splitter produced chunks bigger than chunk_size.
+   Both splitters kept the metadata of the original document.
+
+4. Next steps in a real RAG system:
+   Document -> Chunk -> Embedding -> Vector Database -> Retrieval -> LLM
